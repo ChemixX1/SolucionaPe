@@ -1,0 +1,341 @@
+.galeria {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.09) 0%, rgba(234, 88, 12, 0.13) 55%, rgba(194, 65, 12, 0.17) 100%);
+  padding: 80px 0;
+}
+
+.galeria::before {
+  content: '';
+  position: absolute;
+  bottom: -130px;
+  left: -130px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 24px solid rgba(249, 115, 22, 0.4); /* color naranja transparente al 40% */
+  pointer-events: none;
+  z-index: 1;
+  box-shadow: 0 0 35px rgba(249, 115, 22, 0.2);
+  animation: pulseArc 6s ease-in-out infinite alternate;
+}
+
+.galeria::after {
+  content: '';
+  position: absolute;
+  bottom: -180px;
+  left: -180px;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  border: 2px dashed rgba(249, 115, 22, 0.25);
+  pointer-events: none;
+  z-index: 1;
+  animation: spinSlowArc 25s linear infinite;
+}
+
+@keyframes pulseArc {
+  0% {
+    transform: scale(0.96);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
+@keyframes spinSlowArc {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── HEADER ── */
+.galeria-header {
+  text-align: center;
+  max-width: 100%;
+  margin: 0 auto 52px;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(249, 115, 22, 0.08);
+  color: var(--c-darker);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 100px;
+  border: 1px solid rgba(249, 115, 22, 0.18);
+  margin-bottom: 14px;
+}
+
+.titulo {
+  font-family: 'Barlow Condensed', 'Space Grotesk', sans-serif;
+  font-size: clamp(18px, 4.2vw, 58px);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #fff;
+  background: #F97316;
+  display: inline-block;
+  padding: 6px 28px;
+  border-radius: 10px;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.excl-mark {
+  color: var(--c);
+}
+
+
+/* ── BENTO GRID ── */
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 180px);
+  grid-template-areas:
+    "a c"
+    "b c"
+    "d e";
+  gap: 12px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+/* ── CELL ── */
+.cell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--c-light);
+}
+
+.cell img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: opacity, transform;
+}
+
+/* Image A: starts visible, fades out at ~42%, invisible at ~55%, fades back at ~90% */
+.img-a {
+  animation: imgShowA 15s ease-in-out infinite both;
+  z-index: 2;
+}
+
+/* Image B: starts invisible, fades in at ~45%, visible at ~58%, fades out at ~95% */
+.img-b {
+  animation: imgShowB 15s ease-in-out infinite both;
+  z-index: 3;
+}
+
+@keyframes imgShowA {
+  0%, 40% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  55%, 100% {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes imgShowB {
+  0%, 44% {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  58%, 95% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+}
+
+/* Celda vertical (c): anclar imagen arriba para ver rostros */
+.cell-tall img {
+  object-position: top;
+}
+
+/* Celdas anchas (a, e): anclar imagen arriba */
+.cell-wide img {
+  object-position: top;
+}
+
+/* Celdas cuadradas (b, d): bajar imagen para ver más contenido */
+.cell-square img {
+  object-position: center 65%;
+}
+
+.cell-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(28, 10, 0, 0.25) 100%
+  );
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* ── REVIEW ROTATOR ── */
+.review-wrap {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.review-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px 32px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: reviewIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+}
+
+@keyframes reviewIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.review-texto {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #374151;
+  letter-spacing: -0.01em;
+  font-style: italic;
+  margin: 0;
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.review-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f97316 0%, #c2410c 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.review-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.review-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.review-nombre {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.review-stars {
+  display: flex;
+  gap: 2px;
+  color: #f97316;
+  flex-shrink: 0;
+}
+
+.review-meta {
+  display: block;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.review-dots {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.dot-active {
+  background: #ffffff;
+  transform: scale(1.4);
+}
+
+/* ── DESKTOP ── */
+@media (min-width: 768px) {
+  .galeria-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 260px 260px;
+    grid-template-areas:
+      "a a b c"
+      "d e e c";
+    gap: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .galeria {
+    padding: 96px 0;
+  }
+
+  .galeria-grid {
+    grid-template-rows: 280px 280px;
+    gap: 16px;
+  }
+}

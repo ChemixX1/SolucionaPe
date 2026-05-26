@@ -1,0 +1,215 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 950;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(249, 115, 22, 0.08);
+  transition: var(--transition);
+}
+
+.container-header-mobile {
+  transition: var(--transition-fast);
+}
+
+.container-header-mobile.header-with-shadow {
+  border-bottom-color: rgba(249, 115, 22, 0.15);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.header__logo-img {
+  width: 82px;
+  height: 82px;
+  object-fit: contain;
+  flex-shrink: 0;
+  mix-blend-mode: multiply;
+  margin-right: -20px;
+}
+
+.header__logo-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: #000000;
+  letter-spacing: -0.05em;
+  font-style: normal;
+  text-transform: none;
+  display: inline-flex;
+  align-items: center;
+  transition: var(--transition-bounce);
+}
+
+.header__logo-text--highlight {
+  color: var(--c);
+}
+
+.header__logo:hover .header__logo-text {
+  transform: translateY(-1px);
+}
+
+.header__nav {
+  display: none;
+}
+
+.header__nav-link {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000000;
+  position: relative;
+  padding: 8px 14px;
+  border-radius: 20px;
+  transition: all 0.25s ease;
+  letter-spacing: -0.01em;
+}
+
+.header__nav-link::after {
+  display: none;
+}
+
+.header__nav-link:hover {
+  color: var(--c-dark);
+  background: rgba(249, 115, 22, 0.08);
+}
+
+.header__cta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header__teacher-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--c);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  letter-spacing: -0.01em;
+}
+
+.header__teacher-btn * {
+  pointer-events: none;
+}
+
+.header__teacher-btn:hover {
+  background: var(--c-dark);
+  transform: translateY(-2px);
+}
+
+.header__service-btn {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  background: var(--c);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition: var(--transition-bounce);
+}
+
+.header__service-btn * {
+  pointer-events: none;
+}
+
+.header__service-btn:hover {
+  background: var(--c-dark);
+  transform: translateY(-2px);
+}
+
+.header__icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--dark2);
+  transition: var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.header__icon-btn:hover {
+  background: var(--border-light);
+  color: var(--c);
+  transform: translateY(-2px);
+}
+
+
+.header__hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--bg);
+  transition: var(--transition-fast);
+}
+
+.header__hamburger:hover {
+  background: var(--border-light);
+}
+
+.header__hamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--dark2);
+  border-radius: 2px;
+  transition: var(--transition-fast);
+}
+
+@media (min-width: 1024px) {
+  .header__inner {
+    max-width: 1360px;
+    padding: 0 32px;
+    height: 76px;
+  }
+  .header__nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin: 0 16px;
+  }
+  .header__teacher-btn {
+    display: flex;
+  }
+  .header__service-btn {
+    display: flex;
+  }
+  .header__hamburger {
+    display: none;
+  }
+}
