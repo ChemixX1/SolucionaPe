@@ -8,7 +8,7 @@ import LegalPage from './pages/LegalPage'
 export default function App() {
   return (
     <LangProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/faq" element={<FAQPage />} />
