@@ -162,7 +162,7 @@ export default function EresTecnicoPage() {
 
               <div className={styles.mediaFrame}>
                 <img
-                  src="/assets/images/1 postula.png"
+                  src={`${import.meta.env.BASE_URL}assets/images/1 postula.png`}
                   alt={isEs ? 'Técnico verificado de SolucionaPe' : 'Verified SolucionaPe technician'}
                   className={styles.heroImage}
                 />
@@ -221,7 +221,7 @@ export default function EresTecnicoPage() {
                           {selectedSpecialties.length ? (
                             <span className={styles.dropdownValue}>
                               <span className={styles.dropdownIcon}>
-                                <img src={selectedSpecialties[0].icon} alt="" aria-hidden="true" />
+                                <img src={selectedSpecialties[0].icon.startsWith('/') ? `${import.meta.env.BASE_URL}${selectedSpecialties[0].icon.substring(1)}` : selectedSpecialties[0].icon} alt="" aria-hidden="true" />
                               </span>
                               <span className={styles.dropdownValueText}>
                                 {selectedSpecialties.map(({ name }) => name).join(', ')}
@@ -255,7 +255,7 @@ export default function EresTecnicoPage() {
                                   onClick={() => toggleSpecialty(name)}
                                 >
                                   <span className={styles.dropdownIcon}>
-                                    <img src={icon} alt="" aria-hidden="true" />
+                                    <img src={icon.startsWith('/') ? `${import.meta.env.BASE_URL}${icon.substring(1)}` : icon} alt="" aria-hidden="true" />
                                   </span>
                                   {name}
                                   {isSelected && (

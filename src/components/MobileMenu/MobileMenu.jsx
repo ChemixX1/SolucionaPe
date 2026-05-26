@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import styles from './MobileMenu.module.css'
 import { useLang } from '../../context/LangContext'
+import { Link } from 'react-router-dom'
 
 const WA_NUMBER = '51933658163'
 const WA_URL = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Hola, necesito un técnico. ¿Me pueden ayudar?')}`
@@ -19,7 +20,7 @@ export default function MobileMenu({ open, onClose }) {
     setTimeout(() => {
       const el = document.getElementById(sectionId)
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      else window.location.href = `/#${sectionId}`
+      else window.location.href = `${import.meta.env.BASE_URL}#${sectionId}`
     }, 300)
   }
 
@@ -39,7 +40,7 @@ export default function MobileMenu({ open, onClose }) {
         <div className={styles.menuPanelCabeza}>
           <span className={styles.menuLogo}>
             <img
-              src="/logo.png"
+              src={`${import.meta.env.BASE_URL}logo.png`}
               alt=""
               className={styles.menuLogoImg}
               aria-hidden="true"
@@ -59,7 +60,7 @@ export default function MobileMenu({ open, onClose }) {
           {t.mobileMenu.navLinks.map(({ label, section, href }) => (
             <li key={label}>
               {href
-                ? <a className={styles.menuLink} href={href} onClick={onClose}>{label}</a>
+                ? <Link className={styles.menuLink} to={href} onClick={onClose}>{label}</Link>
                 : <button className={styles.menuLink} onClick={() => handleLink(section)}>{label}</button>
               }
             </li>

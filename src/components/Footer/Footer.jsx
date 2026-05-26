@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import styles from './Footer.module.css'
 import { useLang } from '../../context/LangContext'
+import { Link } from 'react-router-dom'
 
 const ChevronIcon = () => (
   <svg className={styles.footerChevron} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
@@ -43,10 +44,10 @@ export default function Footer() {
       icon: chatIcon,
       body: (
         <>
-          <a href="/terminos">{tf.terminos}</a>
-          <a href="/privacidad">{tf.privacidad}</a>
+          <Link to="/terminos">{tf.terminos}</Link>
+          <Link to="/privacidad">{tf.privacidad}</Link>
           <a href="#" className={styles.footerLibroLink}>
-            <img src="/assets/images/libro-reclamaciones.png" alt="Libro de reclamaciones" className={styles.footerLibro} />
+            <img src={`${import.meta.env.BASE_URL}assets/images/libro-reclamaciones.png`} alt="Libro de reclamaciones" className={styles.footerLibro} />
           </a>
         </>
       ),
@@ -104,10 +105,10 @@ export default function Footer() {
           </div>
           <div className={styles.footerDesktopCol}>
             <h4>{tf.atencion}</h4>
-            <a href="/terminos">{tf.terminos}</a>
-            <a href="/privacidad">{tf.privacidad}</a>
+            <Link to="/terminos">{tf.terminos}</Link>
+            <Link to="/privacidad">{tf.privacidad}</Link>
             <a href="#" className={styles.footerLibroLink}>
-              <img src="/assets/images/libro-reclamaciones.png" alt="Libro de reclamaciones" className={styles.footerLibro} />
+              <img src={`${import.meta.env.BASE_URL}assets/images/libro-reclamaciones.png`} alt="Libro de reclamaciones" className={styles.footerLibro} />
             </a>
           </div>
         </div>

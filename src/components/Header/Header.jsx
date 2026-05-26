@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import styles from './Header.module.css'
 import MobileMenu from '../MobileMenu/MobileMenu'
 import { useLang } from '../../context/LangContext'
+import { Link } from 'react-router-dom'
 
 const WA_NUMBER = '51933658163'
 const WA_URL = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent('Hola, necesito un técnico. ¿Me pueden ayudar?')}`
@@ -28,9 +29,9 @@ export default function Header() {
       <header className={styles.header}>
         <div className={`${styles.containerHeaderMobile} ${scrolled ? styles.headerWithShadow : ''}`}>
           <div className={styles.headerInner}>
-            <a href="/" className={styles.headerLogo} aria-label="SolucionaPe – Inicio">
+            <Link to="/" className={styles.headerLogo} aria-label="SolucionaPe – Inicio">
               <img
-                src="/logo.png"
+                src={`${import.meta.env.BASE_URL}logo.png`}
                 alt=""
                 className={styles.headerLogoImg}
                 aria-hidden="true"
@@ -39,24 +40,24 @@ export default function Header() {
               <span className={styles.headerLogoText}>
                 oluciona<span className={styles.headerLogoTextHighlight}>Pe</span>
               </span>
-            </a>
+            </Link>
 
             <nav className={styles.headerNav} aria-label="Navegación principal">
-              <a href="/#conoce-solucionape-desktop" className={styles.headerNavLink}>{t.header.navConoce}</a>
-              <a href="/#como-solicitar" className={styles.headerNavLink}>{t.header.navComo}</a>
-              <a href="/faq" className={styles.headerNavLink}>{t.header.navFaq}</a>
+              <a href={`${import.meta.env.BASE_URL}#conoce-solucionape-desktop`} className={styles.headerNavLink}>{t.header.navConoce}</a>
+              <a href={`${import.meta.env.BASE_URL}#como-solicitar`} className={styles.headerNavLink}>{t.header.navComo}</a>
+              <Link to="/faq" className={styles.headerNavLink}>{t.header.navFaq}</Link>
             </nav>
 
             <div className={styles.headerCta}>
-              <a
-                href="/eres-tecnico"
+              <Link
+                to="/eres-tecnico"
                 className={styles.headerTeacherBtn}
               >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="15" height="15" style={{ marginRight: '6px' }}>
                   <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
                 </svg>
                 {t.header.btnTecnico}
-              </a>
+              </Link>
 
               <a
                 href={WA_URL}

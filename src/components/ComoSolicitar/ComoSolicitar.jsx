@@ -117,7 +117,7 @@ function StepPreview({ step }) {
         {screens.map((screen) => (
           <img
             key={screen.src}
-            src={screen.src}
+            src={`${import.meta.env.BASE_URL}${screen.src.startsWith('/') ? screen.src.substring(1) : screen.src}`}
             alt={screen.alt}
             className={`${styles.screenShot} ${isAlternating ? styles.screenShotAlternating : ''}`}
             style={{

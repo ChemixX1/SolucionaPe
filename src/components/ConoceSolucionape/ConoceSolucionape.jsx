@@ -22,7 +22,7 @@ export default function ConoceSolucionape() {
           <div className={`${styles.conoceVisual} reveal-left ${inView ? 'visible' : ''}`}>
             <div className={styles.visualFrame}>
               <img
-                src="/assets/images/why-solucionape-premium.png"
+                src={`${import.meta.env.BASE_URL}assets/images/why-solucionape-premium.png`}
                 alt={tc.imageAlt}
                 className={styles.conoceImg}
                 loading="lazy"

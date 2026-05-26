@@ -55,8 +55,8 @@ export default function GaleriaAnimada() {
               className={`${styles.cell} ${tall ? styles.cellTall : ''} ${wide ? styles.cellWide : ''} ${square ? styles.cellSquare : ''}`}
               style={{ gridArea: area }}
             >
-              <img src={img1} alt="" aria-hidden="true" className={styles.imgA} style={{ animationDelay: offset }} />
-              <img src={img2} alt="" aria-hidden="true" className={styles.imgB} style={{ animationDelay: offset }} />
+              <img src={img1.startsWith('/') ? `${import.meta.env.BASE_URL}${img1.substring(1)}` : img1} alt="" aria-hidden="true" className={styles.imgA} style={{ animationDelay: offset }} />
+              <img src={img2.startsWith('/') ? `${import.meta.env.BASE_URL}${img2.substring(1)}` : img2} alt="" aria-hidden="true" className={styles.imgB} style={{ animationDelay: offset }} />
               <div className={styles.cellOverlay} />
             </div>
           ))}

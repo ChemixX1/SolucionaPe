@@ -65,7 +65,7 @@ export default function Hero() {
               <div className={styles.heroImgWrap}>
                 <div className={styles.heroImgCard} />
                 <img
-                  src="/assets/images/hero1.png"
+                  src={`${import.meta.env.BASE_URL}assets/images/hero1.png`}
                   alt="Técnicos verificados SolucionaPe"
                   className={styles.heroImg}
                 />
@@ -86,7 +86,7 @@ export default function Hero() {
             >
               <div className={styles.heroCatBtnIcon}>
                 {typeof icon === 'string' ? (
-                  <img src={icon} alt={nombre} className={styles.heroCatIconImg} />
+                  <img src={icon.startsWith('/') ? `${import.meta.env.BASE_URL}${icon.substring(1)}` : icon} alt={nombre} className={styles.heroCatIconImg} />
                 ) : (
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="28" height="28">
                     {icon}
